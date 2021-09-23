@@ -3,6 +3,7 @@
 ![npm](https://img.shields.io/badge/Mapbox-API-blue/?&logo=mapbox)
 ![npm](https://img.shields.io/npm/v/next?color=purple&label=next&logo=next.js)
 ![npm](https://img.shields.io/npm/v/react-map-gl?label=react-map-gl&logo=react)
+![npm](https://img.shields.io/npm/v/@mui/material?label=MUI&logo=material-ui)
 
 
 

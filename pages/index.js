@@ -7,33 +7,35 @@ import Nav from "../components/Nav";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Tool Tracker</title>
-        <meta name="description" content="Interactive map for tracking custom locations" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <>
       <Nav />
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Tool Tracker
-        </h1>
+      <div className={styles.container}>
+        <Head>
+          <title>Tool Tracker</title>
+          <meta name="description" content="Interactive map for tracking custom locations" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-        <div className={styles.mapContainer}>
-          <Map />
-        </div>
-      </main>
+        <main className={styles.main}>
+          <h1 className={styles.title}>
+            Tool Tracker
+          </h1>
 
-      <footer className={styles.footer}>
-        <div
-        >
-          Developed by {""}
-          <span className={styles.logo}>
-            Joshua Martinez
-          </span>
-        </div>
-      </footer>
-    </div>
+          <div className={styles.mapContainer}>
+            {/* <Map /> */}
+          </div>
+        </main>
+
+        <footer className={styles.footer}>
+          <div
+          >
+            Developed by {""}
+            <span className={styles.logo}>
+              Joshua Martinez
+            </span>
+          </div>
+        </footer>
+      </div>
+    </>
   )
 }

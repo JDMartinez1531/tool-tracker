@@ -6,17 +6,17 @@ import {
 	IconButton,
 	Drawer,
 	MenuItem,
+	Menu
 } from "@mui/material";
 import makeStyles from "@mui/styles/makeStyles";
 import MenuIcon from "@mui/icons-material/Menu";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import useUser from "../lib/useUser";
 
 const useStyles = makeStyles(() => ({
 	header: {
-		backgroundColor: "#ed7d31",
+		backgroundColor: "#333333",
 		paddingRight: "50px",
 		"@media (max-width: 960px)": {
 			paddingLeft: 0,
@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 	menuButton: {
 		fontFamily: "Open Sans, sans-serif",
 		fontWeight: 700,
-		color: "black",
+		color: "white",
 	},
 	toolbar: {
 		display: "flex",
@@ -44,7 +44,6 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-	const { user } = useUser();
 	const { header, logo, menuButton, toolbar, drawerContainer, drawerPaper } =
 		useStyles();
 
@@ -52,6 +51,16 @@ export default function Header() {
 		mobileView: false,
 		drawerOpen: false,
 	});
+
+	const [anchorEL, setAnchorEL] = useState(null);
+
+	const handleOpenMenu = e => {
+		setAnchorEL(e.currentTarget);
+	};
+
+	const handleMenuClose = () => {
+		setAnchorEL(null);
+	};
 
 	const { mobileView, drawerOpen } = state;
 
@@ -61,11 +70,11 @@ export default function Header() {
 			href: "/",
 			showLink: true,
 		},
-		{
-			label: "Home",
-			href: "/dashboard",
-			showLink: true,
-		},
+		// {
+		// 	label: "Home",
+		// 	href: "/dashboard",
+		// 	showLink: true,
+		// },
 		{
 			label: "Sign In",
 			href: "/signin",
@@ -93,9 +102,9 @@ export default function Header() {
 			return window.innerWidth < 960
 				? setState((prevState) => ({ ...prevState, mobileView: true }))
 				: setState((prevState) => ({
-						...prevState,
-						mobileView: false,
-				  }));
+					...prevState,
+					mobileView: false,
+				}));
 		};
 
 		setResponsiveness();
@@ -106,7 +115,7 @@ export default function Header() {
 	const displayDesktop = () => {
 		return (
 			<Toolbar className={toolbar}>
-				{memloklogo}
+
 				<div>{getMenuButtons()}</div>
 			</Toolbar>
 		);
@@ -186,7 +195,33 @@ export default function Header() {
 							href: href,
 							as: decorator,
 						}}>
-			<Button className={menuButton}>{label}</Button>
+						<>
+							<Button
+								className={menuButton}
+								onClick={handleOpenMenu}
+								aria-controls='menu'
+							>
+								{label}
+							</Button>
+
+							<Menu id='menu' onClose={handleMenuClose} anchorEl={anchorEL} open={Boolean(anchorEL)}>
+								<MenuItem onClick={handleMenuClose}>Existing {(label === "My Job Sites") ? "Sites" : "Tools"}
+								</MenuItem>
+								<MenuItem onClick={handleMenuClose}>Add New</MenuItem>
+							</Menu>
+
+							{/* This below is the code that we're trying to implement but it's not working properly */}
+							{/* {
+								((label === "My Job Sites") || (label === "My Tools")) ?
+									<Menu id='menu' onClose={handleMenuClose} anchorEl={anchorEL} open={Boolean(anchorEL)}>
+										<MenuItem onClick={handleMenuClose}>Existing {(label === "My Job Sites") ? "Sites" : "Tools"}
+										</MenuItem>
+										<MenuItem onClick={handleMenuClose}>Add New</MenuItem>
+									</Menu>
+									:
+									null
+							} */}
+						</>
 					</Link>
 				)
 			);

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import AppBar from "@mui/material/AppBar";
 import Container from "@mui/material/Container";
 import Toolbar from "@mui/material/Toolbar";
@@ -32,6 +33,7 @@ const headersData = [
     label: "My Tools",
     href: "/mytools",
     showLink: true,
+    dropDown: true,
   },
   {
     label: "Log Out",
@@ -41,6 +43,8 @@ const headersData = [
 ];
 
 const Header = () => {
+  const [anchorEL, setAnchorEL] = useState(null);
+
   return (
     <>
       <AppBar position="static">
@@ -60,7 +64,7 @@ const Header = () => {
               </NavLink>
             </IconButton>
 
-            <NavBar headersData={headersData} />
+            <NavBar setAnchorEL={setAnchorEL} anchorEL={anchorEL} headersData={headersData} />
           </Container>
         </Toolbar>
       </AppBar>

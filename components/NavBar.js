@@ -1,8 +1,14 @@
 import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import NavLink from "../components/NavLink";
+import DropdownMenu from "../components/DropdownMenu";
 
-const NavBar = ({ headersData }) => {
+const NavBar = ({ headersData, setAnchorEL, anchorEL }) => {
+
+	const handleOpenMenu = e => {
+		setAnchorEL(e.currentTarget);
+	};
+
 	return (
 		<Toolbar
 			component="nav"
@@ -11,15 +17,19 @@ const NavBar = ({ headersData }) => {
 			}}>
 			<Stack direction="row" spacing={4}>
 				{headersData.map(({ label, href, dropDown }) => (
-					<NavLink
-						key={label}
-						href={href}
-						variant="button"
-						sx={{ color: "white" }}>
-						{" "}
-						{label}
-					</NavLink>
-          // (dropDown && <Menu />)
+					<>
+						<NavLink
+							key={label}
+							href={href}
+							onClick={handleOpenMenu}
+							variant="button"
+							sx={{ color: "white" }}>
+							{" "}
+							{label}
+						</NavLink>
+
+						{dropDown && <DropdownMenu setAnchorEL={setAnchorEL} label={label} anchorEL={anchorEL} />}
+					</>
 				))}
 			</Stack>
 		</Toolbar>

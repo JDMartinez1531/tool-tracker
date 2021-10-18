@@ -3,12 +3,13 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import Map from "../components/Map";
 import Nav from "../components/Nav";
+import Header from "../components/Header";
 
 
 export default function Home() {
   return (
     <>
-      <Nav />
+      <Header />
       <div className={styles.container}>
         <Head>
           <title>Tool Tracker</title>

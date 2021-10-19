@@ -11,11 +11,11 @@ export default function Home() {
     <>
       <Header />
       <div className={styles.container}>
-        <Head>
+        {/* <Head>
           <title>Tool Tracker</title>
           <meta name="description" content="Interactive map for tracking custom locations" />
           <link rel="icon" href="/favicon.ico" />
-        </Head>
+        </Head> */}
 
         <main className={styles.main}>
           <h1 className={styles.title}>

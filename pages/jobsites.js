@@ -4,7 +4,9 @@ import styles from '../styles/Home.module.css';
 import Map from "../components/Map";
 import Nav from "../components/Nav";
 import { TablePagination, TableCell } from '@mui/material';
-
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import ListCard from "../components/ListCard";
 
 export default function Home() {
     return (
@@ -21,13 +23,9 @@ export default function Home() {
                     <h1 className={styles.title}>
                         Job Sites
                     </h1>
-
-                    <TablePagination>
-                        <TableCell>bbbbbbbbbbbb</TableCell>
-                        <TableCell>bbbbbbbbbbbb</TableCell>
-                        <TableCell>bbbbbbbbbbbb</TableCell>
-                    </TablePagination>
                 </main>
+
+                <ListCard />
 
                 <footer className={styles.footer}>
                     <div
